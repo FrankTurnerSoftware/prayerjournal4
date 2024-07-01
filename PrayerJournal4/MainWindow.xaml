@@ -17,13 +17,20 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" MinWidth="100"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
         <usercontrols:MenuBarUserControl   Grid.Row="0" Grid.ColumnSpan="2"></usercontrols:MenuBarUserControl>
         <usercontrols:ButtonBarUserControl Grid.Row="1" Grid.ColumnSpan="2" />
-        <usercontrols:ListBoxUserControl   Grid.Row="2" Grid.Column="0"  VerticalAlignment="Stretch" HorizontalAlignment="Stretch"/>
+        <usercontrols:ListBoxUserControl   Grid.Row="2" 
+                                           Grid.Column="0"  
+                                           VerticalAlignment="Stretch" 
+                                           HorizontalAlignment="Stretch"/>
+        <GridSplitter Grid.Row="2" 
+                      Grid.Column="0"
+                      HorizontalAlignment="Right"
+                      Width="5"/>
         <usercontrols:ItemDisplayUserControl Grid.Row="2" Grid.Column="1">
 
         </usercontrols:ItemDisplayUserControl>
