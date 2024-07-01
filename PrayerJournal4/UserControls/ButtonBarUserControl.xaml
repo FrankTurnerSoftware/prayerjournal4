@@ -106,6 +106,25 @@
                     <ToolTipService.ShowDuration>3000</ToolTipService.ShowDuration>
                 </Button>
 
+                <Button Margin="2" 
+                        Grid.Column="4"
+                        HorizontalAlignment="Stretch"
+                        HorizontalContentAlignment="Left">
+                    <StackPanel Orientation="Horizontal" Grid.Column="2" >
+                        <fluent:SymbolIcon Symbol="ChatHelp" 
+                                           Margin="0 0 5 0"
+                                           FontSize="20"
+                                           HorizontalAlignment="Center"/>
+                        <TextBlock HorizontalAlignment="Center"
+                                   FontWeight="Bold">Help</TextBlock>
+                    </StackPanel>
+                    <Button.ToolTip>
+                        Move the selected item to the history list.
+                    </Button.ToolTip>
+                    <ToolTipService.InitialShowDelay>100</ToolTipService.InitialShowDelay>
+                    <ToolTipService.ShowDuration>3000</ToolTipService.ShowDuration>
+                </Button>
+
             </Grid>
             <StackPanel Grid.Row="1" 
                         Orientation="Horizontal" 
