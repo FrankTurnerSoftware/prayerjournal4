@@ -4,6 +4,16 @@
              xmlns:local="clr-namespace:PrayerJournal4"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <!-- Adds an outline to the textbox element that you are focused on.-->
+        <Style TargetType="{x:Type TextBox}">
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Gray"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderThickness" Value="3"/>
+                    <Setter Property="BorderBrush" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

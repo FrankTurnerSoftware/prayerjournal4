@@ -7,34 +7,41 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid >
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="5*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid  Grid.Column="0" HorizontalAlignment="Stretch">
+        <Grid>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
                 <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-            <TextBox x:Name="SearchBox" Grid.Column="0" 
-                         HorizontalAlignment="Stretch"
-                         VerticalAlignment="Center">
-                <TextBox.Text>
-                    Search. . .
-                </TextBox.Text>
-            </TextBox>
-            <Button Background="Transparent" 
-                        Grid.Column="1" 
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center">
-                <Button.Content>
-                    <Image Source="/Images/3643762_find_glass_magnifying_search_zoom_icon.png" Width="25" Height="25"/>
-                </Button.Content>
-            </Button>
-        </Grid>
 
-        <Button Content="See History"  Margin="5" Grid.Column="1" HorizontalAlignment="Stretch"></Button>
-        <Button Content="Show Tags" Margin="5" Grid.Column="2" HorizontalAlignment="Stretch"/>
+
+            <Grid Grid.Column="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Content="New Item"  Margin="5" Grid.Column="0" HorizontalAlignment="Stretch"></Button>
+                <Button Content="Delete Item" Margin="5" Grid.Column="1" HorizontalAlignment="Stretch"/>
+                <Button Content="Move to History"  Margin="5" Grid.Column="2" HorizontalAlignment="Stretch"></Button>
+                <Button Content="Show History"  Margin="5" Grid.Column="3" ></Button>
+
+            </Grid>
+            <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right"
+                    Grid.Column="4" Margin="5"
+                 ToolBarTray.IsLocked="True">
+                <TextBlock VerticalAlignment="Center" Margin="5">Font Size:</TextBlock>
+                <ComboBox>
+                    <ComboBoxItem IsSelected="True">10</ComboBoxItem>
+                    <ComboBoxItem>12</ComboBoxItem>
+                    <ComboBoxItem>14</ComboBoxItem>
+                    <ComboBoxItem>20</ComboBoxItem>
+                    <ComboBoxItem>24</ComboBoxItem>
+                    <ComboBoxItem>36</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+        </Grid>
     </Grid>
 </UserControl>
