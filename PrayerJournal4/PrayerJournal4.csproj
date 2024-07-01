@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\3643762_find_glass_magnifying_search_zoom_icon.png" />
+    <None Remove="Images\3643762_find_glass_magnifying_search_zoom_icon.svg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\3643762_find_glass_magnifying_search_zoom_icon.png" />
+    <Resource Include="Images\3643762_find_glass_magnifying_search_zoom_icon.svg" />
+  </ItemGroup>
+
+</Project>
