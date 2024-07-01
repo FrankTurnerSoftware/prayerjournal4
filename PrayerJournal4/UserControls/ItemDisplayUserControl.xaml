@@ -23,12 +23,28 @@
                  HorizontalAlignment="Stretch"
                  FontWeight="Bold"
                  Background="#A8C1E4"/>
-        
+
         <DatePicker x:Name="PrayerItemDate"
                     Grid.Column="0" Grid.Row="0"  
                     HorizontalAlignment="Right"
                     BorderThickness="0"
-                    Background="#F2A65A"/>
+                    Background="#F2A65A">
+            <DatePicker.Style>
+                <Style TargetType="{x:Type DatePicker}">
+                    <Style.Resources>
+                        <Style TargetType="DatePickerTextBox">
+                            <Setter Property="Background" Value="Transparent"/>
+                        </Style>
+                    </Style.Resources>
+                    <Setter Property="Background" Value="#F2A65A"/>
+                    <Style.Triggers>
+                        <!-- your triggers here -->
+                    </Style.Triggers>
+                </Style>
+            </DatePicker.Style>
+        </DatePicker>
+
+
 
         <TextBox x:Name="PrayerItemDetails"
                  Grid.Row="2" 

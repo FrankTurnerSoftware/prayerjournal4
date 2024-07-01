@@ -12,6 +12,7 @@
                 <MenuItem Header="_New File" />
                 <MenuItem Header="_Open File" />
                 <MenuItem Header="_Save File As" />
+                <MenuItem Header="_Export List" />                
                 <Separator />
                 <MenuItem Header="E_xit" />
             </MenuItem>

@@ -9,7 +9,6 @@
     <Grid>
         <StatusBar>
             <StatusBarItem HorizontalAlignment="Left">Left text</StatusBarItem>
-            <StatusBarItem HorizontalAlignment="Center">Centre text</StatusBarItem>
             <StatusBarItem HorizontalAlignment="Right">Right text</StatusBarItem>
         </StatusBar>
     </Grid>

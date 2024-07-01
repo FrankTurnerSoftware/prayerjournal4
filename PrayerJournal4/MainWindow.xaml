@@ -21,8 +21,12 @@
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
 
-        <usercontrols:MenuBarUserControl   Grid.Row="0" Grid.ColumnSpan="2"></usercontrols:MenuBarUserControl>
-        <usercontrols:ButtonBarUserControl Grid.Row="1" Grid.ColumnSpan="2" />
+        <usercontrols:MenuBarUserControl   Grid.Row="0" 
+                                           Grid.ColumnSpan="2"/>
+
+        <usercontrols:ButtonBarUserControl Grid.Row="1" 
+                                           Grid.ColumnSpan="2" />
+        
         <usercontrols:ListBoxUserControl   Grid.Row="2" 
                                            Grid.Column="0"  
                                            VerticalAlignment="Stretch" 
@@ -31,10 +35,13 @@
                       Grid.Column="0"
                       HorizontalAlignment="Right"
                       Width="5"/>
-        <usercontrols:ItemDisplayUserControl Grid.Row="2" Grid.Column="1">
 
-        </usercontrols:ItemDisplayUserControl>
-        <usercontrols:StatusBarUserControl Grid.Row="3" Grid.ColumnSpan="2"/>
+        <usercontrols:ItemDisplayUserControl Grid.Row="2" 
+                                             Grid.Column="1"/>
+
+
+        <usercontrols:StatusBarUserControl Grid.Row="3" 
+                                           Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>
