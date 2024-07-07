@@ -119,7 +119,7 @@
                                    FontWeight="Bold">Help</TextBlock>
                     </StackPanel>
                     <Button.ToolTip>
-                        Move the selected item to the history list.
+                        See the help documents.
                     </Button.ToolTip>
                     <ToolTipService.InitialShowDelay>100</ToolTipService.InitialShowDelay>
                     <ToolTipService.ShowDuration>3000</ToolTipService.ShowDuration>
@@ -137,10 +137,10 @@
                            FontSize="12">Text Font Size:</TextBlock>
                 <ComboBox FontSize="12"
                           VerticalAlignment="Center">
-                    <ComboBoxItem IsSelected="True">10</ComboBoxItem>
+                    <ComboBoxItem>10</ComboBoxItem>
                     <ComboBoxItem>12</ComboBoxItem>
                     <ComboBoxItem>14</ComboBoxItem>
-                    <ComboBoxItem>20</ComboBoxItem>
+                    <ComboBoxItem IsSelected="True">20</ComboBoxItem>
                     <ComboBoxItem>24</ComboBoxItem>
                     <ComboBoxItem>36</ComboBoxItem>
                 </ComboBox>
