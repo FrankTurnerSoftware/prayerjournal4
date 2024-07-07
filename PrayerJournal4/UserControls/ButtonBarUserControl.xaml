@@ -28,7 +28,8 @@
                 <Button Margin="2" 
                         Grid.Column="0" 
                         HorizontalAlignment="Stretch"
-                        HorizontalContentAlignment="Left">
+                        HorizontalContentAlignment="Left"
+                        Command="{Binding AddItemCommand}">
                     <StackPanel Orientation="Horizontal"
                                 HorizontalAlignment="Left"
                                 Margin="0">
