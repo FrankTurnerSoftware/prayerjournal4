@@ -34,12 +34,12 @@ namespace PrayerJournal4.ViewModels
             if (_displayHistoryList == false)
             {
                 HistoryButtonText = "See Current";
-                _displayHistoryList = true;
+                DisplayHistoryList = true;
             }
             else
             {
                 HistoryButtonText = "See History";
-                _displayHistoryList = false;
+                DisplayHistoryList = false;
             }
         }
         private void ShowCurrent(object obj)

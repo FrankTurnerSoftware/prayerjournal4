@@ -29,7 +29,7 @@ namespace PrayerJournal4.ViewModels
                 {
                     _displayHistoryList = value;
                     OnPropertyChanged("DisplayHistoryList");
-                    OnPropertyChanged(nameof(CurrentItems));
+                    OnPropertyChanged("PrayerListToDisplay");
                 }
             }
         }
