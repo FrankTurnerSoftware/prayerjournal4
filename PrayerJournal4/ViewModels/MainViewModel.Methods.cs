@@ -13,6 +13,7 @@ namespace PrayerJournal4.ViewModels
         public ICommand AddItemCommand { get; }
         public ICommand DeleteItemCommand { get; }
         public ICommand MoveItemToHistoryCommand { get; }
+        public ICommand HistoryToggleCommand {  get; }
 
         public ICommand ExitApplicationCommand { get; }
         private void AddItem(object obj)
@@ -27,9 +28,19 @@ namespace PrayerJournal4.ViewModels
         {
             MessageBox.Show("Move To History");
         }
-        private void ShowHistory(object obj)
+        private void ToggleHistory(object obj)
         {
-            MessageBox.Show("Show History");
+            //MessageBox.Show(_historyButtonText);
+            if (_displayHistoryList == false)
+            {
+                HistoryButtonText = "See Current";
+                _displayHistoryList = true;
+            }
+            else
+            {
+                HistoryButtonText = "See History";
+                _displayHistoryList = false;
+            }
         }
         private void ShowCurrent(object obj)
         {

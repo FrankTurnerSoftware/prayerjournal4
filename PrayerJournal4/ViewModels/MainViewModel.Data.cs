@@ -13,6 +13,7 @@ namespace PrayerJournal4.ViewModels
     {
         private bool _displayHistoryList;
         private PrayerItem _selectedItem;
+        private string _historyButtonText;
 
         public ObservableCollection<PrayerItem> CurrentItems { get; set; }
         public ObservableCollection<PrayerItem> HistoryItems { get; set; }
@@ -42,6 +43,18 @@ namespace PrayerJournal4.ViewModels
                 {
                     _selectedItem = value;
                     OnPropertyChanged("SelectedItem");
+                }
+            }
+        }
+        public string HistoryButtonText
+        {
+            get => _historyButtonText;
+            set
+            {
+                if (_historyButtonText != value)
+                {
+                    _historyButtonText = value;
+                    OnPropertyChanged("HistoryButtonText");
                 }
             }
         }

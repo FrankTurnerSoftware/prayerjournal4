@@ -90,15 +90,21 @@
                 <Button Margin="2" 
                         Grid.Column="3"
                         HorizontalAlignment="Stretch"
-                        HorizontalContentAlignment="Left">
-                    <StackPanel Orientation="Horizontal" Grid.Column="2" >
+                        HorizontalContentAlignment="Left"
+                        VerticalAlignment="Center"
+                        Command="{Binding HistoryToggleCommand}">
+                    <StackPanel Orientation="Horizontal" 
+                                Grid.Column="2" 
+                                VerticalAlignment="Center">
                         <!-- ArrowBounce HistoryDismiss-->
                         <fluent:SymbolIcon Symbol="History" 
                                            Margin="0 0 5 0"
                                            FontSize="20"
                                            HorizontalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center"
-                                   FontWeight="Bold">History</TextBlock>
+                                   FontWeight="Bold"
+                                   FontSize="12"
+                                   Text="{Binding HistoryButtonText}"/>
                     </StackPanel>
                     <Button.ToolTip>
                         See the items that you've moved to the history list.

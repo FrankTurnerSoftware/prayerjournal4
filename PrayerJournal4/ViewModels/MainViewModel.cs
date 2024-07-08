@@ -1,12 +1,4 @@
 ﻿using PrayerJournal4.Helpers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
 
 namespace PrayerJournal4.ViewModels
 {
@@ -22,10 +14,13 @@ namespace PrayerJournal4.ViewModels
 
             // Properties
             _displayHistoryList = false;
-            
+            _historyButtonText = "See History";
+
             // Commands
             AddItemCommand = new RelayCommand(AddItem);
+            HistoryToggleCommand = new RelayCommand(ToggleHistory);
             ExitApplicationCommand = new RelayCommand(ExitApplication);
         }
     }
+    // TODO - If the list is > 0 items, then select the first item on the list.
 }
