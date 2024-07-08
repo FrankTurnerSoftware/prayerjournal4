@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PrayerJournal4.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,15 @@ namespace PrayerJournal4.ViewModels
 
         public MainViewModel()
         {
+            // Data
+            GenerateTestItems testItems = new GenerateTestItems();
+            CurrentItems = testItems.CurrentItems;
+            HistoryItems = testItems.HistoryItems;
+
+            // Properties
+            _displayHistoryList = false;
+            
+            // Commands
             AddItemCommand = new RelayCommand(AddItem);
             ExitApplicationCommand = new RelayCommand(ExitApplication);
         }

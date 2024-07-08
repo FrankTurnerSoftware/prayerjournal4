@@ -22,13 +22,15 @@
                  Grid.Row="0" 
                  HorizontalAlignment="Stretch"
                  FontWeight="Bold"
-                 Background="#A8C1E4"/>
+                 Background="#A8C1E4"
+                 Text="{Binding SelectedItem.PrayerHeadline, Mode=TwoWay}"/>
 
         <DatePicker x:Name="PrayerItemDate"
                     Grid.Column="0" Grid.Row="0"  
                     HorizontalAlignment="Right"
                     BorderThickness="0"
-                    Background="#F2A65A">
+                    Background="#F2A65A"
+                    SelectedDate="{Binding SelectedItem.PrayerItemDate, Mode=TwoWay}">
             <DatePicker.Style>
                 <Style TargetType="{x:Type DatePicker}">
                     <Style.Resources>
@@ -43,18 +45,11 @@
                 </Style>
             </DatePicker.Style>
         </DatePicker>
-
-
-
         <TextBox x:Name="PrayerItemDetails"
                  Grid.Row="2" 
                  VerticalScrollBarVisibility="Visible"
                  TextWrapping="Wrap" 
-                 AcceptsReturn="True"/>
-
-
-
-
-
+                 AcceptsReturn="True"
+                 Text="{Binding SelectedItem.PrayerDescription, Mode=TwoWay}"/>
     </Grid>
 </UserControl>
