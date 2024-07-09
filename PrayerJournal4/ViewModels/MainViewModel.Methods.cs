@@ -27,7 +27,20 @@ namespace PrayerJournal4.ViewModels
         }
         private void MoveItemToHistory(object obj)
         {
-            MessageBox.Show("Move To History");
+            if(DisplayHistoryList == true)
+            {
+                CurrentItems.Add(SelectedItem);
+                HistoryItems.Remove(SelectedItem);
+                PrayerListToDisplay.Remove(SelectedItem);
+                SelectedItem = null;
+            }
+            else if (DisplayHistoryList == false)
+            {
+                HistoryItems.Add(SelectedItem);
+                CurrentItems.Remove(SelectedItem);
+                PrayerListToDisplay.Remove(SelectedItem);
+                SelectedItem = null;
+            }
         }
         private void ToggleHistory(object obj)
         {
