@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Input;
+using PrayerJournal4.Models;
 
 namespace PrayerJournal4.ViewModels
 {
@@ -18,7 +14,14 @@ namespace PrayerJournal4.ViewModels
         public ICommand ExitApplicationCommand { get; }
         private void AddItem(object obj)
         {
-            MessageBox.Show("Add Item");
+            SelectedItem = new PrayerItem
+            {
+                PrayerHeadline = "<New Item>",
+                PrayerItemDate = DateTime.Now,
+                IsHistory = DisplayHistoryList,
+                CreatedDate = DateTime.Now
+            };
+            PrayerListToDisplay.Add(SelectedItem);
         }
         private void DeleteItem(object obj)
         {
@@ -60,10 +63,7 @@ namespace PrayerJournal4.ViewModels
                 DisplayHistoryList = false;
             }
         }
-        private void ShowCurrent(object obj)
-        {
-            MessageBox.Show("Show Current Items");
-        }
+       
         private void ShowHelp(object obj)
         {
             MessageBox.Show("Show the help page");
