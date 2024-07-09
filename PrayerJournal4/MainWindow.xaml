@@ -34,6 +34,7 @@
                                            HorizontalAlignment="Stretch"/>
         <GridSplitter Grid.Row="2" 
                       Grid.Column="1"
+                      IsTabStop="False"
                       HorizontalAlignment="Stretch"
                       Width="5"/>
 
