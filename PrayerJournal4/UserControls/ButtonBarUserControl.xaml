@@ -50,7 +50,8 @@
                 <Button Margin="2" 
                         Grid.Column="1"
                         HorizontalAlignment="Stretch"
-                        HorizontalContentAlignment="Left">
+                        HorizontalContentAlignment="Left"
+                        IsEnabled="{Binding IsItemSelected}">
                     <StackPanel Orientation="Horizontal" Grid.Column="2" >
                         <fluent:SymbolIcon Symbol="Delete" 
                                            Margin="0 0 5 0"
@@ -71,7 +72,8 @@
                 <Button Margin="2" 
                         Grid.Column="2"
                         HorizontalAlignment="Stretch"
-                        HorizontalContentAlignment="Left">
+                        HorizontalContentAlignment="Left"
+                        IsEnabled="{Binding IsItemSelected}">
                     <StackPanel Orientation="Horizontal" Grid.Column="2" >
                         <fluent:SymbolIcon Symbol="ArrowForward" 
                                            Margin="0 0 5 0"
