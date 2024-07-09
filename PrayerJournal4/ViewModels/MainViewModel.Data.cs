@@ -36,6 +36,8 @@ namespace PrayerJournal4.ViewModels
             }
         }
 
+        public bool IsItemSelected => SelectedItem != null;
+
         public PrayerItem SelectedItem
         {
             get => _selectedItem;
@@ -45,6 +47,7 @@ namespace PrayerJournal4.ViewModels
                 {
                     _selectedItem = value;
                     OnPropertyChanged("SelectedItem");
+                    OnPropertyChanged("IsItemSelected");
                 }
             }
         }
