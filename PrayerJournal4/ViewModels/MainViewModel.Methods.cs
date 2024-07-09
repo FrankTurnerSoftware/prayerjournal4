@@ -34,11 +34,15 @@ namespace PrayerJournal4.ViewModels
             if (_displayHistoryList == false)
             {
                 HistoryButtonText = "See Current";
+                CurrentStatusColour = "LightSalmon";
+                CurrentStatusText = "History";
                 DisplayHistoryList = true;
             }
             else
             {
                 HistoryButtonText = "See History";
+                CurrentStatusColour = "LightGreen";
+                CurrentStatusText = "Current";
                 DisplayHistoryList = false;
             }
         }

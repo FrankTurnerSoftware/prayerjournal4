@@ -14,6 +14,8 @@ namespace PrayerJournal4.ViewModels
         private bool _displayHistoryList;
         private PrayerItem _selectedItem;
         private string _historyButtonText;
+        private string _currentStatusColour;
+        private string _currentStatusText;
 
         public ObservableCollection<PrayerItem> CurrentItems { get; set; }
         public ObservableCollection<PrayerItem> HistoryItems { get; set; }
@@ -55,6 +57,32 @@ namespace PrayerJournal4.ViewModels
                 {
                     _historyButtonText = value;
                     OnPropertyChanged("HistoryButtonText");
+                }
+            }
+        }
+
+        public string CurrentStatusText
+        {
+            get => _currentStatusText;
+            set
+            {
+                if (_currentStatusText != value)
+                {
+                    _currentStatusText = value;
+                    OnPropertyChanged("CurrentStatusText");
+                }
+            }
+        }
+
+        public string CurrentStatusColour
+        {
+            get => _currentStatusColour;
+            set
+            {
+                if (_currentStatusColour != value)
+                {
+                    _currentStatusColour = value;
+                    OnPropertyChanged("CurrentStatusColour");
                 }
             }
         }

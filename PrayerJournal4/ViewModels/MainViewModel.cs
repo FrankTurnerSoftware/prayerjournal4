@@ -15,6 +15,8 @@ namespace PrayerJournal4.ViewModels
             // Properties
             _displayHistoryList = false;
             _historyButtonText = "See History";
+            _currentStatusColour = "LightGreen";
+            _currentStatusText = "Current";
 
             // Commands
             AddItemCommand = new RelayCommand(AddItem);

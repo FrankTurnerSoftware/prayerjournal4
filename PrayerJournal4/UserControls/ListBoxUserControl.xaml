@@ -7,9 +7,25 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="250"/>
+        </Grid.ColumnDefinitions>
 
-        <ListBox ItemsSource="{Binding PrayerListToDisplay}"
+        <ListBox Grid.Row="0"
+                 ItemsSource="{Binding PrayerListToDisplay}"
                  DisplayMemberPath="PrayerHeadline"
                  SelectedItem="{Binding SelectedItem, Mode=TwoWay}"/>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="1"
+                    Background="{Binding CurrentStatusColour}">
+            <TextBlock Margin="5 0 0 0" 
+                       Text="{Binding CurrentStatusText}"/>
+
+
+        </StackPanel>
     </Grid>
 </UserControl>
