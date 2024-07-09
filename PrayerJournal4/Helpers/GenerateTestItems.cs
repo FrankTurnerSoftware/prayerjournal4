@@ -22,7 +22,7 @@ namespace PrayerJournal4.Helpers
                 PrayerItem item = new PrayerItem
                 {
                     Id = i + 1,
-                    PrayerHeadline = $"Prayer Headeline {i}",
+                    PrayerHeadline = $"Prayer Headline {i}",
                     PrayerDescription = $"Prayer Description {i}",
                     IsHistory = isHistory,
                     PrayerItemDate = DateTime.Now,

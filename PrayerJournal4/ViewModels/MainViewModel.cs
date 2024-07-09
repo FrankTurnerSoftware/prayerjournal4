@@ -20,8 +20,11 @@ namespace PrayerJournal4.ViewModels
 
             // Commands
             AddItemCommand = new RelayCommand(AddItem);
+            DeleteItemCommand = new RelayCommand(DeleteItem);
+            MoveItemToHistoryCommand = new RelayCommand(MoveItemToHistory);
             HistoryToggleCommand = new RelayCommand(ToggleHistory);
             ExitApplicationCommand = new RelayCommand(ExitApplication);
+
         }
     }
     // TODO - If the list is > 0 items, then select the first item on the list.

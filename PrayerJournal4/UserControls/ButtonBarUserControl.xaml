@@ -51,6 +51,7 @@
                         Grid.Column="1"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
+                        Command="{Binding DeleteItemCommand}"
                         IsEnabled="{Binding IsItemSelected}">
                     <StackPanel Orientation="Horizontal" Grid.Column="2" >
                         <fluent:SymbolIcon Symbol="Delete" 
@@ -73,6 +74,7 @@
                         Grid.Column="2"
                         HorizontalAlignment="Stretch"
                         HorizontalContentAlignment="Left"
+                        Command="{Binding MoveItemToHistoryCommand}"
                         IsEnabled="{Binding IsItemSelected}">
                     <StackPanel Orientation="Horizontal" Grid.Column="2" >
                         <fluent:SymbolIcon Symbol="ArrowForward" 

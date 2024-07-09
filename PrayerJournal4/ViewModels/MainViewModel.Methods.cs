@@ -22,7 +22,8 @@ namespace PrayerJournal4.ViewModels
         }
         private void DeleteItem(object obj)
         {
-            MessageBox.Show("Delete Item");
+            PrayerListToDisplay.Remove(SelectedItem);
+            SelectedItem = null;
         }
         private void MoveItemToHistory(object obj)
         {
