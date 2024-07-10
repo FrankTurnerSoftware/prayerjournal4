@@ -2,9 +2,9 @@
 
 2024-07-10 TODOs
 ### General functionality
-- [ ] Open File functionality
+- [x] Open File functionality
 - [ ] HotKeys for Open, Save, Exit
-- [ ] Default opening .ini file. (Save current state. ie last filename, etc.) 
+- [x] Default opening .ini file. (Save current state. ie last filename, etc.) 
 - [ ] Encrypt the data files. 
 
 ### Satus Bar

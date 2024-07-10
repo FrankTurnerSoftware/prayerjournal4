@@ -8,7 +8,9 @@
         mc:Ignorable="d"
         Title="Prayer Journal" Height="450" Width="800" FontSize="20"
         MinWidth="800">
-
+    <Window.InputBindings>
+        <KeyBinding Key="O" Modifiers="Control" Command="{Binding OpenFileCommand}" />
+    </Window.InputBindings>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
