@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.IO;
+using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
 using PrayerJournal.Models;
@@ -7,11 +8,14 @@ namespace PrayerJournal.ViewModels
 {
     public partial class MainViewModel
     {
+        // Menu Bar Commands
         public ICommand AddItemCommand { get; }
         public ICommand DeleteItemCommand { get; }
         public ICommand MoveItemToHistoryCommand { get; }
         public ICommand HistoryToggleCommand { get; }
 
+        // File Menu Commands
+        public ICommand OpenFileCommand { get; }
         public ICommand SaveFileCommand { get; }
         public ICommand SaveFileAsCommand { get; }
         public ICommand ExitApplicationCommand { get; }
@@ -83,7 +87,15 @@ namespace PrayerJournal.ViewModels
         }
         private void OpenFile(object obj)
         {
-            MessageBox.Show("Open File");
+            FileModel fileModel = new FileModel(CurrentItems, HistoryItems);
+            string message = fileModel.OpenFile();
+
+            Filename = fileModel.FilePath;
+            CurrentItems = fileModel.CurrentItems;
+            HistoryItems = fileModel.HistoryItems;
+
+            MessageBox.Show(Filename);
+            
         }
         private void SaveFile(object obj)
         {

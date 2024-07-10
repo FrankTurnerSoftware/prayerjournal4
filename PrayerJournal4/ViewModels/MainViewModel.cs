@@ -21,6 +21,7 @@ namespace PrayerJournal.ViewModels
 
             // Commands
 
+            OpenFileCommand = new RelayCommand(OpenFile);
             SaveFileCommand = new RelayCommand(SaveFile);
             SaveFileAsCommand = new RelayCommand(SaveFileAs);
 

@@ -1,11 +1,5 @@
 ﻿using PrayerJournal.Models;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PrayerJournal.ViewModels
 {
@@ -18,11 +12,31 @@ namespace PrayerJournal.ViewModels
         private string _currentStatusText;
         private string _filename;
         private int _selectedIndex;
-
-        public ObservableCollection<PrayerItem> CurrentItems { get; set; }
-        public ObservableCollection<PrayerItem> HistoryItems { get; set; }
+        private ObservableCollection<PrayerItem> _currentItems;
+        private ObservableCollection<PrayerItem> _historyItems;
 
         public ObservableCollection<PrayerItem> PrayerListToDisplay => DisplayHistoryList ? HistoryItems : CurrentItems;
+
+        public ObservableCollection<PrayerItem> CurrentItems
+        {
+            get => _currentItems;
+            set
+            {
+                _currentItems = value;
+                OnPropertyChanged(nameof(HistoryItems));
+                OnPropertyChanged(nameof(PrayerListToDisplay));
+            }
+        }
+        public ObservableCollection<PrayerItem> HistoryItems
+        {
+            get => _historyItems;
+            set
+            {
+                _historyItems = value;
+                OnPropertyChanged(nameof(HistoryItems));
+                OnPropertyChanged(nameof(PrayerListToDisplay));
+            }
+        }
 
         public bool DisplayHistoryList
         {
@@ -104,6 +118,17 @@ namespace PrayerJournal.ViewModels
             }
         }
 
-        public string Filename { get; set; }
+        public string Filename
+        {
+            get => _filename;
+            set
+            {
+                if (_filename != value)
+                {
+                    _filename = value;
+                    OnPropertyChanged(nameof(Filename));
+                }
+            }
+        }
     }
 }
