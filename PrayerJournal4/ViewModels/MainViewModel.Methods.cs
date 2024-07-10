@@ -174,8 +174,11 @@ namespace PrayerJournal.ViewModels
 
         private void SaveLastOpenedFile(string filePath)
         {
+            string directoryPath = Path.GetDirectoryName(filePath);
+
             Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
             config.AppSettings.Settings[LastFileKey].Value = filePath;
+            config.AppSettings.Settings["StartFilePath"].Value = directoryPath;
             config.Save(ConfigurationSaveMode.Modified);
             ConfigurationManager.RefreshSection("appSettings");
         }
