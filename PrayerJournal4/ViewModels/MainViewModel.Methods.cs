@@ -94,7 +94,7 @@ namespace PrayerJournal.ViewModels
             CurrentItems = fileModel.CurrentItems;
             HistoryItems = fileModel.HistoryItems;
 
-            MessageBox.Show(Filename);
+            MessageBox.Show(message);
             
         }
         private void SaveFile(object obj)
