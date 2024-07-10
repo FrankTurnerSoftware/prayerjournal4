@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System.Configuration;
+using System.IO;
 using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
@@ -8,6 +9,7 @@ namespace PrayerJournal.ViewModels
 {
     public partial class MainViewModel
     {
+        private const string LastFileKey = "LastOpenedFile";
         // Menu Bar Commands
         public ICommand AddItemCommand { get; }
         public ICommand DeleteItemCommand { get; }
@@ -16,6 +18,7 @@ namespace PrayerJournal.ViewModels
 
         // File Menu Commands
         public ICommand OpenFileCommand { get; }
+        public ICommand NewFileCommand { get; }
         public ICommand SaveFileCommand { get; }
         public ICommand SaveFileAsCommand { get; }
         public ICommand ExitApplicationCommand { get; }
@@ -81,27 +84,56 @@ namespace PrayerJournal.ViewModels
         {
             MessageBox.Show("Show the help page");
         }
+
+        private void LoadLastOpenedFile()
+        {
+            string lastFile = ConfigurationManager.AppSettings[LastFileKey];
+
+            if (!string.IsNullOrEmpty(lastFile) && File.Exists(lastFile))
+            {
+                // Ideally you wouldn't duplicate the code for OpenFile function
+                FileModel fileModel = new FileModel(CurrentItems, HistoryItems);
+
+                string jsonContent = File.ReadAllText(lastFile);
+                fileModel.OpenFile(jsonContent);
+                Filename = fileModel.FilePath;
+                CurrentItems = fileModel.CurrentItems;
+                HistoryItems = fileModel.HistoryItems;
+            }
+        }
         private void NewFile(object obj)
         {
-            MessageBox.Show("New File");
+            CurrentItems.Clear();
+            HistoryItems.Clear();
+            PrayerListToDisplay.Clear();
+            Filename = null;
         }
         private void OpenFile(object obj)
         {
             FileModel fileModel = new FileModel(CurrentItems, HistoryItems);
-            string message = fileModel.OpenFile();
+            string message = fileModel.OpenFileWithDialog();
 
             Filename = fileModel.FilePath;
             CurrentItems = fileModel.CurrentItems;
             HistoryItems = fileModel.HistoryItems;
 
+            SaveLastOpenedFile(Filename);
             MessageBox.Show(message);
-            
         }
         private void SaveFile(object obj)
         {
-            FileModel fileModel = new FileModel(CurrentItems, HistoryItems);
-            string saveresponse = fileModel.SaveAllItems(Filename);
-            MessageBox.Show(saveresponse);
+            if (Filename == null)
+            {
+                SaveFileAs(obj);
+            }
+            else
+            {
+                FileModel fileModel = new FileModel(CurrentItems, HistoryItems);
+                string saveresponse = fileModel.SaveAllItems(Filename);
+                MessageBox.Show(saveresponse);
+            }
+
+            SaveLastOpenedFile(Filename);
         }
         private void SaveFileAs(object obj)
         {
@@ -114,10 +146,10 @@ namespace PrayerJournal.ViewModels
             {
                 string filename = saveFileDialog.FileName;
                 Filename = filename;
+                // Then save it
+                SaveFile(obj);
             }
-
-            // Then save it
-            SaveFile(obj);
+            SaveLastOpenedFile(Filename);
         }
         private void ExportList(object obj)
         {
@@ -138,6 +170,14 @@ namespace PrayerJournal.ViewModels
         private void MoveItemDown(object obj)
         {
             MessageBox.Show("Selected Item Move Down");
+        }
+
+        private void SaveLastOpenedFile(string filePath)
+        {
+            Configuration config = ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.None);
+            config.AppSettings.Settings[LastFileKey].Value = filePath;
+            config.Save(ConfigurationSaveMode.Modified);
+            ConfigurationManager.RefreshSection("appSettings");
         }
     }
 }

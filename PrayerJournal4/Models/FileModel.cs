@@ -2,10 +2,12 @@
 using System.Collections.ObjectModel;
 using System.Configuration;
 using System.IO;
+using System.Net.Http.Json;
 using System.Runtime.CompilerServices;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
+using System.Windows;
 
 namespace PrayerJournal.Models
 {
@@ -13,7 +15,7 @@ namespace PrayerJournal.Models
     {
         public ObservableCollection<PrayerItem> CurrentItems { get; set; }
         public ObservableCollection<PrayerItem> HistoryItems { get; set; }
-        public string FilePath {  get; set; }
+        public string FilePath { get; set; }
 
         public FileModel(ObservableCollection<PrayerItem> currentitems,
                             ObservableCollection<PrayerItem> historyitems)
@@ -22,19 +24,15 @@ namespace PrayerJournal.Models
             HistoryItems = historyitems;
         }
 
-        public string OpenFile()
+        public string OpenFileWithDialog()
         {
             string returnMessage = "";
-            string json;
-            List<PrayerItem> fullPrayerList = null;
+            string jsonFile;
+
             try
             {
-                json = OpenFileFromDialog();
-                fullPrayerList = JsonSerializer.Deserialize<List<PrayerItem>>(json);
-                List<PrayerItem> currentItems = fullPrayerList.Where(item => item.IsHistory == false).ToList();
-                List<PrayerItem> historyItems = fullPrayerList.Where(item => item.IsHistory == true).ToList();
-                CurrentItems = new ObservableCollection<PrayerItem>(currentItems);
-                HistoryItems = new ObservableCollection<PrayerItem>(historyItems);
+                jsonFile = OpenFileFromDialog();
+                OpenFile(jsonFile);
 
                 returnMessage = "File Opened Successfully";
             }
@@ -45,6 +43,17 @@ namespace PrayerJournal.Models
             return returnMessage;
         }
 
+        public void OpenFile(string jsonContent)
+        {
+            List<PrayerItem> fullPrayerList;
+            fullPrayerList = JsonSerializer.Deserialize<List<PrayerItem>>(jsonContent);
+
+            List<PrayerItem> currentItems = fullPrayerList.Where(item => item.IsHistory == false).ToList();
+            List<PrayerItem> historyItems = fullPrayerList.Where(item => item.IsHistory == true).ToList();
+
+            CurrentItems = new ObservableCollection<PrayerItem>(currentItems);
+            HistoryItems = new ObservableCollection<PrayerItem>(historyItems);
+        }
         private string OpenFileFromDialog()
         {
             string returnJSON = "";
