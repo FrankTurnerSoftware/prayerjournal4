@@ -1,16 +1,19 @@
 ﻿using System.Windows;
 using System.Windows.Input;
-using PrayerJournal4.Models;
+using Microsoft.Win32;
+using PrayerJournal.Models;
 
-namespace PrayerJournal4.ViewModels
+namespace PrayerJournal.ViewModels
 {
     public partial class MainViewModel
     {
         public ICommand AddItemCommand { get; }
         public ICommand DeleteItemCommand { get; }
         public ICommand MoveItemToHistoryCommand { get; }
-        public ICommand HistoryToggleCommand {  get; }
+        public ICommand HistoryToggleCommand { get; }
 
+        public ICommand SaveFileCommand { get; }
+        public ICommand SaveFileAsCommand { get; }
         public ICommand ExitApplicationCommand { get; }
         private void AddItem(object obj)
         {
@@ -25,13 +28,18 @@ namespace PrayerJournal4.ViewModels
         }
         private void DeleteItem(object obj)
         {
+            int selectedindex = SelectedIndex;
             PrayerListToDisplay.Remove(SelectedItem);
             SelectedItem = null;
+
+            SelectedIndex = selectedindex - 1;
+
         }
-        private void MoveItemToHistory(object obj)
+        private void MoveItemToAndFromHistory(object obj)
         {
-            if(DisplayHistoryList == true)
+            if (DisplayHistoryList == true)
             {
+                SelectedItem.IsHistory = false;
                 CurrentItems.Add(SelectedItem);
                 HistoryItems.Remove(SelectedItem);
                 PrayerListToDisplay.Remove(SelectedItem);
@@ -39,6 +47,7 @@ namespace PrayerJournal4.ViewModels
             }
             else if (DisplayHistoryList == false)
             {
+                SelectedItem.IsHistory = true;
                 HistoryItems.Add(SelectedItem);
                 CurrentItems.Remove(SelectedItem);
                 PrayerListToDisplay.Remove(SelectedItem);
@@ -63,7 +72,7 @@ namespace PrayerJournal4.ViewModels
                 DisplayHistoryList = false;
             }
         }
-       
+
         private void ShowHelp(object obj)
         {
             MessageBox.Show("Show the help page");
@@ -76,9 +85,27 @@ namespace PrayerJournal4.ViewModels
         {
             MessageBox.Show("Open File");
         }
+        private void SaveFile(object obj)
+        {
+            FileModel fileModel = new FileModel(CurrentItems, HistoryItems);
+            string saveresponse = fileModel.SaveAllItems(Filename);
+            MessageBox.Show(saveresponse);
+        }
         private void SaveFileAs(object obj)
         {
-            MessageBox.Show("Save File As");
+            // Get the new filename
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Prayer List File (*.json)|*.json|All files (*.*)|*.*";
+            saveFileDialog.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                string filename = saveFileDialog.FileName;
+                Filename = filename;
+            }
+
+            // Then save it
+            SaveFile(obj);
         }
         private void ExportList(object obj)
         {

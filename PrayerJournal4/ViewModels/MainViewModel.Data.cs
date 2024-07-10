@@ -1,4 +1,4 @@
-﻿using PrayerJournal4.Models;
+﻿using PrayerJournal.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrayerJournal4.ViewModels
+namespace PrayerJournal.ViewModels
 {
     public partial class MainViewModel
     {
@@ -16,6 +16,8 @@ namespace PrayerJournal4.ViewModels
         private string _historyButtonText;
         private string _currentStatusColour;
         private string _currentStatusText;
+        private string _filename;
+        private int _selectedIndex;
 
         public ObservableCollection<PrayerItem> CurrentItems { get; set; }
         public ObservableCollection<PrayerItem> HistoryItems { get; set; }
@@ -89,5 +91,19 @@ namespace PrayerJournal4.ViewModels
                 }
             }
         }
+        public int SelectedIndex
+        {
+            get => _selectedIndex;
+            set
+            {
+                if (_selectedIndex != value)
+                {
+                    _selectedIndex = value;
+                    OnPropertyChanged(nameof(SelectedIndex));
+                }
+            }
+        }
+
+        public string Filename { get; set; }
     }
 }

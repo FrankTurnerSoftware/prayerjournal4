@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrayerJournal4.Models
+namespace PrayerJournal.Models
 {
     public class PrayerItem
     {

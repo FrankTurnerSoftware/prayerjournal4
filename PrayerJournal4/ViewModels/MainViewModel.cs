@@ -1,6 +1,6 @@
-﻿using PrayerJournal4.Helpers;
+﻿using PrayerJournal.Helpers;
 
-namespace PrayerJournal4.ViewModels
+namespace PrayerJournal.ViewModels
 {
     public partial class MainViewModel : ViewModelBase
     {
@@ -17,11 +17,16 @@ namespace PrayerJournal4.ViewModels
             _historyButtonText = "See History";
             _currentStatusColour = "LightGreen";
             _currentStatusText = "Current";
+            Filename = "c:\\temp\\prayerlist.json";
 
             // Commands
+
+            SaveFileCommand = new RelayCommand(SaveFile);
+            SaveFileAsCommand = new RelayCommand(SaveFileAs);
+
             AddItemCommand = new RelayCommand(AddItem);
             DeleteItemCommand = new RelayCommand(DeleteItem);
-            MoveItemToHistoryCommand = new RelayCommand(MoveItemToHistory);
+            MoveItemToHistoryCommand = new RelayCommand(MoveItemToAndFromHistory);
             HistoryToggleCommand = new RelayCommand(ToggleHistory);
             ExitApplicationCommand = new RelayCommand(ExitApplication);
 

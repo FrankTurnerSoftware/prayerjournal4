@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace PrayerJournal4.ViewModels
+namespace PrayerJournal.ViewModels
 {
     public class RelayCommand : ICommand
     {

@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace PrayerJournal4
+namespace PrayerJournal
 {
     /// <summary>
     /// Interaction logic for App.xaml

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PrayerJournal4.ViewModels
+namespace PrayerJournal.ViewModels
 {
     public class ViewModelBase : INotifyPropertyChanged
     {

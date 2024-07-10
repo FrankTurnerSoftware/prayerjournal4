@@ -7,7 +7,7 @@ using System.Windows.Controls;
 using System.Windows;
 using System.Windows.Input;
 
-namespace PrayerJournal4.Helpers
+namespace PrayerJournal.Helpers
 {
     public static class TextBoxBehaviours
     {

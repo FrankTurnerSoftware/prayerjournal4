@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace PrayerJournal4.UserControls
+namespace PrayerJournal.UserControls
 {
     /// <summary>
     /// Interaction logic for StatusBarUserControl.xaml

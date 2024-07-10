@@ -1,7 +1,7 @@
-﻿using PrayerJournal4.Models;
+﻿using PrayerJournal.Models;
 using System.Collections.ObjectModel;
 
-namespace PrayerJournal4.Helpers
+namespace PrayerJournal.Helpers
 {
     public class GenerateTestItems
     {
