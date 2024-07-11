@@ -1,5 +1,4 @@
-﻿using PrayerJournal.Helpers;
-using PrayerJournal.Models;
+﻿using PrayerJournal.Models;
 using System.Collections.ObjectModel;
 
 namespace PrayerJournal.ViewModels

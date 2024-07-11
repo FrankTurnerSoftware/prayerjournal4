@@ -82,7 +82,7 @@
                                            FontSize="20"
                                            HorizontalAlignment="Center"/>
                         <TextBlock HorizontalAlignment="Center"
-                                   FontWeight="Bold">Move</TextBlock>
+                                   FontWeight="Bold">Store</TextBlock>
                     </StackPanel>
                     <Button.ToolTip>
                         Move the selected item to the history list.

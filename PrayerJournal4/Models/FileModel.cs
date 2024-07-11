@@ -1,13 +1,7 @@
 ﻿using Microsoft.Win32;
 using System.Collections.ObjectModel;
-using System.Configuration;
 using System.IO;
-using System.Net.Http.Json;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
 using System.Text.Json;
-using System.Windows;
 
 namespace PrayerJournal.Models
 {
@@ -24,36 +18,6 @@ namespace PrayerJournal.Models
             HistoryItems = historyitems;
         }
 
-        public string OpenFileWithDialog()
-        {
-            string returnMessage = "";
-            string jsonFile;
-
-            try
-            {
-                jsonFile = OpenFileFromDialog();
-                OpenFile(jsonFile);
-
-                returnMessage = "File Opened Successfully";
-            }
-            catch (Exception ex)
-            {
-                returnMessage = $"I was not able to read the file.\n\nError Details:\n{ex}";
-            }
-            return returnMessage;
-        }
-
-        public void OpenFile(string jsonContent)
-        {
-            List<PrayerItem> fullPrayerList;
-            fullPrayerList = JsonSerializer.Deserialize<List<PrayerItem>>(jsonContent);
-
-            List<PrayerItem> currentItems = fullPrayerList.Where(item => item.IsHistory == false).ToList();
-            List<PrayerItem> historyItems = fullPrayerList.Where(item => item.IsHistory == true).ToList();
-
-            CurrentItems = new ObservableCollection<PrayerItem>(currentItems);
-            HistoryItems = new ObservableCollection<PrayerItem>(historyItems);
-        }
         private string OpenFileFromDialog()
         {
             string returnJSON = "";
@@ -72,6 +36,37 @@ namespace PrayerJournal.Models
             return returnJSON;
         }
 
+        public void OpenFile(string jsonContent)
+        {
+            List<PrayerItem> fullPrayerList;
+            fullPrayerList = JsonSerializer.Deserialize<List<PrayerItem>>(jsonContent);
+
+            List<PrayerItem> currentItems = fullPrayerList.Where(item => item.IsHistory == false).ToList();
+            List<PrayerItem> historyItems = fullPrayerList.Where(item => item.IsHistory == true).ToList();
+
+            CurrentItems = new ObservableCollection<PrayerItem>(currentItems);
+            HistoryItems = new ObservableCollection<PrayerItem>(historyItems);
+        }
+        
+        public string OpenFileWithDialog()
+        {
+            string returnMessage = "";
+            string jsonFile;
+
+            try
+            {
+                jsonFile = OpenFileFromDialog();
+                OpenFile(jsonFile);
+
+                returnMessage = "File opened successfully.";
+            }
+            catch (Exception ex)
+            {
+                returnMessage = $"I was not able to read the file.\n\nError Details:\n{ex}";
+            }
+            return returnMessage;
+        }
+
         public string SaveAllItems(string path)
         {
             string successResponse = "";
@@ -84,11 +79,11 @@ namespace PrayerJournal.Models
                 string jsonString = JsonSerializer.Serialize(fullList);
                 File.WriteAllText(path, jsonString);
 
-                successResponse = "Saved Successfully.";
+                successResponse = "Save successful.";
             }
             catch (Exception ex)
             {
-                successResponse = $"Save Didn't Work \n\n{ex.Message}";
+                successResponse = $"Save unsuccessful.\n\n{ex.Message}";
             }
 
             return successResponse;
